@@ -1,0 +1,7 @@
+---
+- name: Deploy OM2 Linode
+  hosts: rocinante.om2.io
+  remote_user: root
+
+  roles:
+    - base

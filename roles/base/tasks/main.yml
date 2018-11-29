@@ -1,0 +1,25 @@
+---
+
+- name: disable default services
+  service: name={{ item }} state=stopped enabled=no
+  with_items:
+    - atd
+    - abrt-journal-core
+    - abrt-oops
+    - abrt-xorg
+    - abrtd
+    - mcelog
+    - ModemManager
+    - sssd
+    - smartd
+
+- name: disable cockpit
+  service:
+    name: cockpit.socket
+    enabled: no
+    state: stopped
+
+- name: remove cockpit
+  dnf:
+    name: cockpit
+    state: absent
